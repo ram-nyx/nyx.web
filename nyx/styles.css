@@ -1,0 +1,755 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #000000;
+    color: white;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    padding-top: 0;
+    background-color: transparent;
+}
+
+.regular-header {
+    padding: 30px 0;
+    background: transparent;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.badges {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    color: white;
+}
+
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 100px 60px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+h1 {
+    font-size: 56px;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    color: white;
+}
+
+h1 .highlight {
+    color: #007bff;
+    display: block;
+    margin-top: 10px;
+}
+
+.hero-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 540px;
+}
+
+.video-side {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: rgba(0, 0, 51, 0.5);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000033;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 51, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-overlay:hover {
+    background: rgba(0, 0, 51, 0.4);
+}
+
+.play-button {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.play-button i {
+    color: white;
+    font-size: 32px;
+    margin-left: 5px;
+}
+
+.video-overlay:hover .play-button {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.why-master {
+    clear: both;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.guide-badge {
+    background: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    padding: 8px 24px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.why-master h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.why-master .subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.job-listings {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.job-listings img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.job-listings img:hover {
+    transform: scale(1.02);
+}
+
+.content-side {
+    padding-top: 40px;
+}
+
+/* Add these new styles */
+.gradient-bg {
+    display: none;
+}
+
+.gradient-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,102,0.8) 100%);
+    opacity: 0.5;
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.subtitle-centered {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.feature-boxes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.feature-box {
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 20px;
+    height: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid rgba(0, 123, 255, 0.4);
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(30, 30, 30, 0.8);
+}
+
+.audience-boxes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.audience-box {
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 15px;
+    padding: 25px;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 123, 255, 0.4);
+}
+
+.audience-box:hover {
+    transform: translateY(-5px);
+    background: rgba(30, 30, 30, 0.8);
+}
+
+/* Updated Icon Styles in Audience Boxes */
+.audience-box li i {
+    margin-right: 12px; /* Slightly increased spacing */
+    font-size: 14px; /* Slightly larger icon */
+    width: 20px; /* Ensure space for potential background */
+    height: 20px; /* Ensure space for potential background */
+    border-radius: 50%; /* Make background circular if added */
+    display: inline-flex; /* Use flex for centering */
+    align-items: center;
+    justify-content: center;
+}
+
+.challenge-icon {
+    color: #FF6B6B; /* Brighter Red */
+    background-color: rgba(255, 107, 107, 0.15); /* Faint red background */
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.help-icon {
+    color: #51CF66; /* Brighter Green */
+    background-color: rgba(81, 207, 102, 0.15); /* Faint green background */
+    border: 1px solid rgba(81, 207, 102, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .hero-section {
+        padding: 80px 40px 40px;
+        gap: 40px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 968px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        padding: 60px 30px 30px;
+    }
+
+    .video-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .content-side {
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .badges {
+        justify-content: center;
+    }
+
+    .hero-description {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .badges {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .hero-section {
+        padding: 40px 20px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 30px;
+    }
+    
+    .regular-header {
+        padding: 20px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0 20px;
+    }
+    
+    .logo img {
+        height: 30px;
+    }
+}
+
+/* Add these styles for job listings */
+.job-listings-section {
+    padding: 60px 0;
+    margin-top: 40px;
+}
+
+.job-listings-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.job-listing {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.job-listing:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.job-listing img {
+    width: 100%;
+    height: auto;
+}
+
+/* Add this style for blue highlight text */
+.highlight {
+    color: #007bff; /* Bright blue */
+    display: inline; /* Changed from block to inline for better text flow */
+}
+
+/* Optional: Add hover effect */
+.highlight:hover {
+    color: #0056b3; /* Slightly darker blue on hover */
+    transition: color 0.3s ease;
+}
+
+/* Styles for the Perfect For Section */
+.perfect-for {
+    text-align: center;
+    padding: 80px 0;
+    margin-top: 60px;
+}
+
+.path-finder-badge {
+    background: rgba(0, 123, 255, 0.1);
+    border: 1px solid #007bff;
+    color: #007bff;
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.path-finder-badge:hover {
+    background: #007bff;
+    color: white;
+}
+
+.perfect-for h2 {
+    margin-bottom: 25px;
+    font-size: 48px; /* Adjust as needed */
+}
+
+.perfect-for .subtitle-centered {
+    max-width: 650px;
+    margin-bottom: 60px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+}
+
+.audience-boxes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Styling for the Course Content Section */
+.formatted-section {
+    text-align: center;
+    padding: 80px 0;
+}
+
+.course-content .guide-badge {
+    background: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid rgba(0, 123, 255, 0.3);
+}
+
+.course-content h2 {
+    font-size: 48px;
+    margin-bottom: 25px;
+    line-height: 1.3;
+}
+
+.course-content .subtitle-centered {
+    max-width: 750px;
+    margin: 0 auto 50px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* Update heading colors directly */
+.challenge-list h4 {
+    color: #FF6B6B;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.help-list h4 {
+    color: #51CF66;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+/* Styles for Course Modules Section */
+.modules-section {
+    padding: 40px 0 80px;
+}
+
+.modules-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.module-box {
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 60px;
+}
+
+.module-number {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #007bff;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px 8px 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.module-content {
+    background-color: rgba(30, 30, 30, 0.6);
+    border: 1px solid rgba(0, 123, 255, 0.5);
+    border-radius: 15px;
+    padding: 30px 35px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.module-content:hover {
+    border-color: rgba(0, 123, 255, 0.8);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+}
+
+.module-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.module-icon {
+    color: #007bff;
+    font-size: 24px;
+    margin-right: 15px;
+    min-width: 25px;
+}
+
+.module-content h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.module-subtitle {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.topic-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+}
+
+.topic-list li {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.topic-icon {
+    color: #007bff;
+    font-size: 16px;
+    margin-right: 12px;
+    min-width: 16px;
+}
+
+.module-outcome {
+    background-color: rgba(0, 123, 255, 0.1);
+    border: 1px solid rgba(0, 123, 255, 0.3);
+    border-radius: 10px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: flex-start;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.outcome-icon {
+    color: #007bff;
+    font-size: 16px;
+    margin-right: 12px;
+    margin-top: 2px;
+    min-width: 16px;
+}
+
+/* Responsive Modules */
+@media (max-width: 768px) {
+    .module-box {
+        padding-left: 0;
+        margin-bottom: 30px;
+    }
+
+    .module-number {
+        position: static;
+        width: auto;
+        height: auto;
+        padding: 5px 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        display: inline-block;
+        box-shadow: none;
+    }
+     .module-content {
+        padding: 25px;
+     }
+}
+
+/* Styles for the "Why Master" section content */
+
+.why-master .guide-badge {
+    /* Ensure styles from previous steps are here or refine */
+    background: rgba(0, 123, 255, 0.1);
+    border: 1px solid rgba(0, 123, 255, 0.4);
+    color: #007bff;
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.why-master h2 {
+    font-size: 48px;
+    margin-bottom: 25px;
+}
+
+.why-master .subtitle-centered {
+    max-width: 750px;
+    margin: 0 auto 50px; /* Space before feature boxes */
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.feature-boxes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 60px; /* Space before job listings */
+    max-width: 1200px; /* Container width */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px; /* Padding for smaller screens */
+}
+
+.feature-box {
+    background: rgba(30, 30, 30, 0.6);
+    border: 1px solid rgba(0, 123, 255, 0.4);
+    border-radius: 20px;
+    height: 180px;
+}
+
+.section-job-listings {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px; /* Space between images */
+    max-width: 1200px; /* Container width */
+    margin: 0 auto; /* Center the grid */
+    padding: 0 20px; /* Padding for smaller screens */
+}
+
+.job-image-wrapper img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* Subtle shadow */
+}
+
+/* Remove styles for the old .job-listings-section if necessary */
+/* Example: */
+/*
+.job-listings-section { display: none; }
+.job-listings-container { display: none; }
+.job-listing { display: none; }
+*/
+
+/* Responsive adjustments for the "Why Master" section */
+@media (max-width: 1200px) {
+    .feature-boxes, .section-job-listings {
+        max-width: 960px;
+    }
+}
+
+@media (max-width: 992px) {
+    .feature-boxes {
+        grid-template-columns: repeat(2, 1fr); /* 2 boxes per row */
+    }
+}
+
+
+@media (max-width: 768px) {
+     .section-job-listings {
+         grid-template-columns: 1fr; /* Stack job listings */
+         gap: 25px;
+     }
+     .feature-boxes {
+          grid-template-columns: repeat(2, 1fr); /* Keep 2 or stack */
+          gap: 20px;
+     }
+     .why-master h2 {
+         font-size: 40px; /* Adjust title size */
+     }
+}
+
+@media (max-width: 576px) {
+    .feature-boxes {
+        grid-template-columns: 1fr; /* Stack feature boxes */
+    }
+     .why-master h2 {
+         font-size: 32px; /* Adjust title size */
+     }
+}
+
+p, li {
+    color: rgba(255, 255, 255, 0.85);
+} 
