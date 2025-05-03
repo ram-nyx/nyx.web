@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #000000;
+    background: linear-gradient(180deg, #000B1D 0%, #000714 100%);
     color: white;
     min-height: 100vh;
     margin: 0;
@@ -51,7 +51,8 @@ body {
 }
 
 .badge {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(13, 23, 43, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 12px 24px;
     border-radius: 50px;
     font-size: 14px;
@@ -98,12 +99,18 @@ h1 .highlight {
 .video-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
     background: rgba(0, 0, 51, 0.5);
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.video-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .video-container iframe {
@@ -112,25 +119,12 @@ h1 .highlight {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #000033;
+    border: none;
 }
 
+/* Remove the video overlay since we want direct player controls */
 .video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 51, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.video-overlay:hover {
-    background: rgba(0, 0, 51, 0.4);
+    display: none;
 }
 
 .play-button {
@@ -240,19 +234,19 @@ h1 .highlight {
 }
 
 .feature-box {
-    background: rgba(30, 30, 30, 0.6);
+    background: rgba(13, 23, 43, 0.7);
+    border: 1px solid rgba(0, 123, 255, 0.4);
     border-radius: 20px;
-    height: 200px;
+    height: 180px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     overflow: hidden;
-    border: 1px solid rgba(0, 123, 255, 0.4);
 }
 
 .feature-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    background: rgba(30, 30, 30, 0.8);
+    background: rgba(13, 23, 43, 0.9);
 }
 
 .audience-boxes {
@@ -263,16 +257,16 @@ h1 .highlight {
 }
 
 .audience-box {
-    background: rgba(30, 30, 30, 0.6);
+    background: rgba(13, 23, 43, 0.7);
+    border: 1px solid rgba(0, 123, 255, 0.4);
     border-radius: 15px;
     padding: 25px;
     transition: transform 0.3s ease;
-    border: 1px solid rgba(0, 123, 255, 0.4);
 }
 
 .audience-box:hover {
     transform: translateY(-5px);
-    background: rgba(30, 30, 30, 0.8);
+    background: rgba(13, 23, 43, 0.9);
 }
 
 /* Updated Icon Styles in Audience Boxes */
@@ -524,6 +518,25 @@ h1 .highlight {
     padding-left: 60px;
 }
 
+/* Add vertical connecting line */
+.module-box::before {
+    content: '';
+    position: absolute;
+    left: 20px; /* Center the line with the module number */
+    top: 40px; /* Start from bottom of module number */
+    bottom: -40px; /* Connect to next module */
+    width: 2px;
+    background: #007bff; /* Same blue as module numbers */
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* Remove line from last module */
+.module-box:last-child::before {
+    display: none;
+}
+
+/* Update module number styles */
 .module-number {
     position: absolute;
     left: 0;
@@ -532,17 +545,17 @@ h1 .highlight {
     color: white;
     width: 40px;
     height: 40px;
-    border-radius: 8px 8px 8px 0;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
     font-weight: 700;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    z-index: 1; /* Ensure number appears above line */
 }
 
 .module-content {
-    background-color: rgba(30, 30, 30, 0.6);
+    background: rgba(13, 23, 43, 0.7);
     border: 1px solid rgba(0, 123, 255, 0.5);
     border-radius: 15px;
     padding: 30px 35px;
@@ -564,7 +577,6 @@ h1 .highlight {
     color: #007bff;
     font-size: 24px;
     margin-right: 15px;
-    min-width: 25px;
 }
 
 .module-content h3 {
@@ -587,18 +599,18 @@ h1 .highlight {
 }
 
 .topic-list li {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 14px;
-    margin-bottom: 12px;
     display: flex;
     align-items: center;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .topic-icon {
     color: #007bff;
-    font-size: 16px;
+    font-size: 14px;
     margin-right: 12px;
-    min-width: 16px;
+    width: 16px;
+    text-align: center;
 }
 
 .module-outcome {
@@ -624,18 +636,15 @@ h1 .highlight {
 @media (max-width: 768px) {
     .module-box {
         padding-left: 0;
-        margin-bottom: 30px;
+    }
+
+    .module-box::before {
+        left: 20px;
     }
 
     .module-number {
-        position: static;
-        width: auto;
-        height: auto;
-        padding: 5px 15px;
-        border-radius: 8px;
+        position: relative;
         margin-bottom: 15px;
-        display: inline-block;
-        box-shadow: none;
     }
      .module-content {
         padding: 25px;
@@ -682,7 +691,7 @@ h1 .highlight {
 }
 
 .feature-box {
-    background: rgba(30, 30, 30, 0.6);
+    background: rgba(13, 23, 43, 0.7);
     border: 1px solid rgba(0, 123, 255, 0.4);
     border-radius: 20px;
     height: 180px;
@@ -752,4 +761,127 @@ h1 .highlight {
 
 p, li {
     color: rgba(255, 255, 255, 0.85);
+}
+
+/* Certificate Section Styles */
+.certificate-section {
+    padding: 100px 0;
+    background: linear-gradient(180deg, #000B1D 0%, #000714 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.certificate-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.certificate-content {
+    text-align: left;
+}
+
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 123, 255, 0.1);
+    border: 1px solid rgba(0, 123, 255, 0.3);
+    color: #007bff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.verified-badge i {
+    color: #007bff;
+}
+
+.certificate-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.cert-feature {
+    background: rgba(13, 23, 43, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    transition: transform 0.3s ease;
+}
+
+.cert-feature:hover {
+    transform: translateY(-5px);
+    background: rgba(13, 23, 43, 0.9);
+}
+
+.cert-feature i {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.cert-feature h4 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.cert-feature p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.certificate-preview {
+    position: relative;
+}
+
+.floating-certificate {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 12px;
+    animation: float 6s ease-in-out infinite;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .certificate-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .certificate-features {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .certificate-preview {
+        order: -1;
+        margin-bottom: 40px;
+    }
+
+    .floating-certificate {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .certificate-features {
+        grid-template-columns: 1fr;
+    }
 } 
